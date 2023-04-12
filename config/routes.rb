@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
+  resources :instruments
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
-  devise_scope :user do
-   get '/users/sign_out' => 'devise/sessions#destroy'
-  end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'instruments#index'
 
-  # Defines the root path route ("/")
-  root "store#index"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
